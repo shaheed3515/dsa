@@ -25,7 +25,7 @@ class Solution {
                     int edge=x.second;
                     if(dis+d<res[edge]){
                         /*
-                        if(res[edge]!=INT_MAX){
+                        if(res[edge]!=INT_MAX){ //previously a short dist one is placed cause set takeout min value so rev contains min dis, means if not INT_MAX then we know we placed a better dist
                             s.erase({res[edge],edge});
                         }
                         */
