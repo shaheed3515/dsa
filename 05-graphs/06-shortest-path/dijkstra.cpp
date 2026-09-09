@@ -1,6 +1,6 @@
 class Solution {
     public:
-        void dijkstra(vector<vector<pair<int,int>>>& adj,vector<int>& res,int& src){
+        void dijkstra(vector<vector<pair<int,int>>>& adj,vector<int>& res,int& src){ //O()
             priority_queue<pair<int,int> , vector<pair<int,int>>,greater<pair<int,int>>> pq;
             pq.push({0,src});
             /*
@@ -8,11 +8,11 @@ class Solution {
             s.insert({0,src});
             */
             res[src]=0;
-            while(!pq.empty()){
+            while(!pq.empty()){ //O(E)
                 pair<int,int> t=pq.top();
                 int d=t.first;
                 int v=t.second;
-                pq.pop();
+                pq.pop(); // log(V)
                 /*
                 pair<int,int> it=*s.begin(); // begin() is a iterator so dereference it.
                 int d=it.first;
@@ -20,7 +20,7 @@ class Solution {
                 s.erase(it);
                 */
                 if(d>res[v]) continue; //if the initial moving dist is geater than in res it waste to take that path
-                for( pair<int,int>& x : adj[v]){
+                for( pair<int,int>& x : adj[v]){  //O(E)
                     int dis=x.first;
                     int edge=x.second;
                     if(dis+d<res[edge]){
@@ -30,7 +30,7 @@ class Solution {
                         }
                         */
                         res[edge]=dis+d;
-                        pq.push({dis+d,edge});
+                        pq.push({dis+d,edge});    //log(V)
                         /*
                         s.insert({dis+d,edge});
                         */
